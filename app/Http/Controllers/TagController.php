@@ -11,7 +11,7 @@ class TagController extends Controller
     {
         $tags = Tag::all();
 
-        return view('article.index', ['tags' => $tags]);
+        return view('tag.index', ['tags' => $tags]);
     }
 
     public function create()
