@@ -16,12 +16,25 @@ class TagController extends Controller
 
     public function create()
     {
-        return view('misc.todo', ['to_implement' => __METHOD__]);
+        return view('tag.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return view('misc.todo', ['to_implement' => __METHOD__]);
+        $validated_request = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imageRelativePath = $request->file('image')->store('tag_images', 'public');
+            $validated_request['image'] = $imageRelativePath;
+        }
+
+        Tag::create($validated_request);
+
+        return back()->with('success', 'Nouveau Tag crée avec succès : ' . $validated_request['name']);
     }
 
     public function edit()
