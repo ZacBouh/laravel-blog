@@ -7,6 +7,7 @@
     <title>TODO</title>
 </head>
 <body>
-    <h1>TODO : this has not been implemented yet</h1>
+    <h1>TODO this has not been implemented yet</h1>
+    <h2>{{ explode("\\", $to_implement)[array_key_last(explode("\\", $to_implement))] }}</h2>
 </body>
 </html>
