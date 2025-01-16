@@ -5,11 +5,19 @@
 - [ ] Listing des articles du plus récent au plus ancien (Image principale, titre, catégorie, date, auteur, début de l'article + un bouton pour aller voir la fiche avec l'article complet)
 - [ ] faire une liste des catégories ayant des articles afin de filtrer pour afficher les articles selon la catégorie
 - [ ] faire un champ recherche pour afficher les article selon la recherche (on recherche dans le titre, dans le contenu, dans les auteurs.)
+
 ## CRUD pour les catégories (création, affichage dans un tableau, update, delete)
-- [ ] Nom
-- [ ] Description
-- [ ] Image
+- [x] Creation
+- [ ] Retrieval
+- [ ] Update
+- [ ] Delete
+### Tag structure :
+- Nom
+- Description
+- Image
+
 ## CRUD pour les articles (création, affichage dans un tableau, update, delete) 
+
 - [ ] Titre
 - [ ] auteur
 - [ ] created_at, updated_at (timestamp)
