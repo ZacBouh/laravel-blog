@@ -1,11 +1,6 @@
-<?php 
 
-#-------------
 # PROJET BLOG
-#-------------
 
-# Installation d'un nouveau projet Laravel
-# Choisir un thème graphique
 # Page index : 
     ## Listing des articles du plus récent au plus ancien (Image principale, titre, catégorie, date, auteur, début de l'article + un bouton pour aller voir la fiche avec l'article complet)
     ## faire une liste des catégories ayant des articles afin de filtrer pour afficher les articles selon la catégorie
@@ -25,10 +20,10 @@
     ## *slug (unique)
 
 # Page article :
-    # on affiche l'aricle au complet
+    ## on affiche l'aricle au complet
 
 # Page contact :
-    # Un formulaire permettant soit l'envoi de mail soit l'enregistrement en bdd soit les deux
+    ## Un formulaire permettant soit l'envoi de mail soit l'enregistrement en bdd soit les deux
 
 
 # Bonus :
@@ -54,5 +49,4 @@
 # Bonus :
     ## Permettre la possibilité sur les articles de charger une galerie photo (nouvelle table)
 
-# Bonus : aller plus loin rajouter selon vos idées.
 
