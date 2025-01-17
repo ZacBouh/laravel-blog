@@ -70,5 +70,5 @@
         HERE IS THE FOOTER
     </footer>
 </body>
-@yield('script')
+@stack('script')
 </html>

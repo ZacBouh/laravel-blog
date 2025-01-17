@@ -19,6 +19,8 @@ Route::prefix('articles')->name('articles.')->group(function () {
     Route::delete('/delete/{article}', [ArticleController::class, 'delete'])->name('delete');
 
     Route::get('/show/{article}', [ArticleController::class, 'show'])->name('show');
+
+    Route::get('/filter', [ArticleController::class, 'filteredList'])->name('filter');
 });
 
 Route::prefix('tags')->name('tags.')->group(function () {
@@ -34,14 +36,6 @@ Route::prefix('tags')->name('tags.')->group(function () {
 
     Route::get('/show/{tag}', [TagController::class, 'show'])->name('show');
 });
-
-// Route::prefix('message')->name('messages.')->group(function () {
-//     Route::get('/', [MessageController::class], 'create')->name('index');
-
-//     Route::get('/message', [MessageController::class], 'create')->name('create');
-//     Route::post('/message', [MessageController::class], 'store')->name('store');
-// });
-
 
 Route::prefix('messages')->name('messages.')->group(function () {
     Route::get('/', [MessageController::class, 'index'])->name('index');

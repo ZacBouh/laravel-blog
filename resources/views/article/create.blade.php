@@ -1,6 +1,6 @@
 @extends('layouts.mainLayout')
 
-@section('script')
+@push('script')
 <script>
     $( '#tags' ).select2( {
         theme: "bootstrap-5",
@@ -8,7 +8,7 @@
         placeholder: $( this ).data( 'placeholder' ),
     } );
 </script>
-@endsection
+@endpush
 
 @section('title', 'Article Creation')
 

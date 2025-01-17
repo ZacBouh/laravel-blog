@@ -14,8 +14,11 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::orderBy('created_at', 'desc')->get();
-        return view('article.index', ['articles' => $articles]);
+        $tags = Tag::all();
+        return view('article.index', ['articles' => $articles, 'tags' => $tags]);
     }
+
+
 
     public function create()
     {
@@ -106,5 +109,29 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         return view('article.show', ['article' => $article]);
+    }
+
+    public function filteredList(Request $request)
+    {
+        $tagsId = Tag::pluck('id')->toArray();
+
+        $validatedRequest = $request->validate([
+            'filterTags' => 'nullable|array',
+            'filterTags.*' => ['integer', Rule::in($tagsId)]
+        ]);
+
+        if (empty($validatedRequest['filterTags'])) {
+            return redirect()->route('articles.index');
+        }
+
+        $filterTags = $validatedRequest['filterTags'];
+
+        $filteredArticles = Article::whereHas('tags', function ($query) use ($filterTags) {
+            $query->whereIn('tags.id', $filterTags);
+        }, '=', count($filterTags))->get();
+
+        $tags = Tag::all();
+
+        return view('article.index', ['articles' => $filteredArticles, 'tags' => $tags, 'selectedFilters' => $filterTags]);
     }
 }

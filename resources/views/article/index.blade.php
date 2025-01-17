@@ -13,6 +13,8 @@
     <p class="alert alert-success">{{session('success')}}</p>
 @endif
 
+@include('component.tag.filterBar', ['tags' => $tags])
+
 @foreach ($articles as $article )
     <div class='article-container' >
         <div>
