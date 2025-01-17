@@ -19,7 +19,7 @@
 <form action="{{ route('articles.filter')}}" method="get" id='tag-filter-form'>
     @csrf
     @method('GET')
-    <select class="form-select" multiple id="tag-filter-bar" data-placeholder="Themes" name='filterTags[]'>
+    <select class="form-select" multiple id="tag-filter-bar" data-placeholder="Filtrer" name='filterTags[]'>
             @foreach ($tags as $tag )
                 <option value="{{ $tag->id }}"
                     {{ isset($selectedFilters) && in_array($tag->id, $selectedFilters) ? 'selected' : '' }}

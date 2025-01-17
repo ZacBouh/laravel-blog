@@ -14,6 +14,7 @@
 @endif
 
 @include('component.tag.filterBar', ['tags' => $tags])
+@include('component.searchBar')
 
 @foreach ($articles as $article )
     <div class='article-container' >

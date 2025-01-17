@@ -126,12 +126,33 @@ class ArticleController extends Controller
 
         $filterTags = $validatedRequest['filterTags'];
 
-        $filteredArticles = Article::whereHas('tags', function ($query) use ($filterTags) {
-            $query->whereIn('tags.id', $filterTags);
+        $filteredArticles = Article::whereHas('tags', function ($tag) use ($filterTags) {
+            $tag->whereIn('tags.id', $filterTags);
         }, '=', count($filterTags))->get();
 
         $tags = Tag::all();
 
         return view('article.index', ['articles' => $filteredArticles, 'tags' => $tags, 'selectedFilters' => $filterTags]);
+    }
+
+    public function search(Request $request)
+    {
+        $validatedQuery = $request->validate([
+            'query' => 'nullable|string|max:255'
+        ]);
+
+        if (empty($validatedQuery['query'])) {
+            return redirect()->route('articles.index');
+        }
+
+        $query = $validatedQuery['query'];
+
+        $filteredArticles = Article::where('title', 'LIKE', "%{$query}%")->orWhere('content', 'LIKE', "%{$query}%")->orWhereHas('user', function ($user) use ($query) {
+            $user->where('name', 'LIKE', "%{$query}%");
+        })->get();
+
+        $tags = Tag::all();
+
+        return view('article.index', ['articles' => $filteredArticles, 'tags' => $tags]);
     }
 }

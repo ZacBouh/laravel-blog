@@ -21,6 +21,8 @@ Route::prefix('articles')->name('articles.')->group(function () {
     Route::get('/show/{article}', [ArticleController::class, 'show'])->name('show');
 
     Route::get('/filter', [ArticleController::class, 'filteredList'])->name('filter');
+
+    Route::get('/search', [ArticleController::class, 'search'])->name('search');
 });
 
 Route::prefix('tags')->name('tags.')->group(function () {
