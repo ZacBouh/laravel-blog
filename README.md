@@ -39,7 +39,7 @@
 - slug (unique)
 
 ## Page contact :
-- [ ] Un formulaire permettant soit l'envoi de mail soit l'enregistrement en bdd soit les deux
+- [x] Un formulaire permettant soit l'envoi de mail soit l'enregistrement en bdd soit les deux
 
 
 ## Bonus :

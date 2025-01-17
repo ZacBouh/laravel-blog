@@ -49,7 +49,7 @@
                         Contact
                     </a>
                     <ul class="dropdown-menu" >
-                        <li><a  href="#">Écrire un message</a></li>
+                        <li><a  href="{{ route('messages.create') }}">Écrire un message</a></li>
                         <li><a  href="#">LinkedIn</a></li>
                     </ul>
                 </li> 

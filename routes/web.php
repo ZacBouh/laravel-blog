@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\MessageController;
 
 Route::get('/', [ArticleController::class, 'index']);
 
@@ -32,4 +33,19 @@ Route::prefix('tags')->name('tags.')->group(function () {
     Route::delete('/delete/{tag}', [TagController::class, 'delete'])->name('delete');
 
     Route::get('/show/{tag}', [TagController::class, 'show'])->name('show');
+});
+
+// Route::prefix('message')->name('messages.')->group(function () {
+//     Route::get('/', [MessageController::class], 'create')->name('index');
+
+//     Route::get('/message', [MessageController::class], 'create')->name('create');
+//     Route::post('/message', [MessageController::class], 'store')->name('store');
+// });
+
+
+Route::prefix('messages')->name('messages.')->group(function () {
+    Route::get('/', [MessageController::class, 'index'])->name('index');
+
+    Route::get('/create', [MessageController::class, 'create'])->name('create');
+    Route::post('/create', [MessageController::class, 'store'])->name('store');
 });
