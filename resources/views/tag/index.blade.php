@@ -6,14 +6,24 @@
 
 @section('body')
 
+@if (session('success'))
+    <p class="alert alert-success">{{session('success')}}</p>
+@endif
+
 @foreach ( $tags as $tag )
     
     <div>
         <div>
             <h3>{{ $tag->name }}</h3>
             <div>
-                <a href="{{ route('tags.edit', $tag->id) }}">edit</a>
-                <a href="{{ route('tags.delete', $tag->id) }}">delete</a>
+                <a href="{{ route('tags.edit', $tag->id) }}">
+                    <button>edit</button>
+                </a>
+                <form action="{{ route('tags.delete', $tag->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button>delete</button>
+                </form>
             </div>
         </div>
         <p>{{ $tag->description}}</p>

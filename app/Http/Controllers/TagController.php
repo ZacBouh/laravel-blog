@@ -66,9 +66,15 @@ class TagController extends Controller
         return view('tag.edit', ['tag' => $tag]);
     }
 
-    public function delete()
+    public function delete(Tag $tag)
     {
-        return view('misc.todo', ['to_implement' => __METHOD__]);
+
+        if ($tag->image) {
+            Storage::disk('public')->delete($tag->image);
+        }
+        $tag->delete();
+
+        return redirect()->route('tags.index')->with('sucess', 'Tag supprimé');
     }
 
     public function show()

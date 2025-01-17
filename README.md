@@ -10,7 +10,7 @@
 - [x] Creation
 - [x] Retrieval
 - [x] Update
-- [ ] Delete
+- [x] Delete
 ### Tag structure :
 - Nom
 - Description
