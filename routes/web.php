@@ -10,7 +10,7 @@ Route::prefix('articles')->name('articles.')->group(function () {
     Route::get('/', [ArticleController::class, 'index'])->name('index');
 
     Route::get('/create', [ArticleController::class, 'create'])->name('create');
-    Route::post('/create', [ArticleController::class, 'store'])->name('create');
+    Route::post('/create', [ArticleController::class, 'store'])->name('store');
 
     Route::get('/edit/{article}', [ArticleController::class, 'edit'])->name('edit');
     Route::put('/edit/{article}', [ArticleController::class, 'update'])->name('update');
@@ -24,7 +24,7 @@ Route::prefix('tags')->name('tags.')->group(function () {
     Route::get('/', [TagController::class, 'index'])->name('index');
 
     Route::get('/create', [TagController::class, 'create'])->name('create');
-    Route::post('/create', [TagController::class, 'store'])->name('create');
+    Route::post('/create', [TagController::class, 'store'])->name('store');
 
     Route::get('/edit/{tag}', [TagController::class, 'edit'])->name('edit');
     Route::put('/edit/{tag}', [TagController::class, 'update'])->name('update');

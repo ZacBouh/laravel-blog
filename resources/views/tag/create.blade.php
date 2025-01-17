@@ -11,7 +11,7 @@
 
 @endif
 
-<form action="{{ route('tags.create') }}" method="post" enctype="multipart/form-data" >
+<form action="{{ route('tags.store') }}" method="post" enctype="multipart/form-data" >
     @csrf
     @method('POST')
     <label for="name">Nom du tag</label>
