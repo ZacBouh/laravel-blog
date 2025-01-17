@@ -74,7 +74,7 @@ class TagController extends Controller
         }
         $tag->delete();
 
-        return redirect()->route('tags.index')->with('sucess', 'Tag supprimé');
+        return redirect()->route('tags.index')->with('success', 'Tag supprimé');
     }
 
     public function show()

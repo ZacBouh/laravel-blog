@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -61,9 +62,14 @@ class ArticleController extends Controller
         return view('misc.todo', ['to_implement' => __METHOD__]);
     }
 
-    public function delete()
+    public function delete(Article $article)
     {
-        return view('misc.todo', ['to_implement' => __METHOD__]);
+        if ($article->image) {
+            Storage::disk('public')->delete($article->image);
+        }
+        $article->delete();
+
+        return redirect()->route('articles.index')->with('success', 'Article supprimé : ' . $article->title);
     }
 
     public function show()

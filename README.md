@@ -20,7 +20,7 @@
 - [x] Creation
 - [X] Retrieval
 - [ ] Update
-- [ ] Delete
+- [x] Delete
 ### Article structure :
 - title
 - user_id
