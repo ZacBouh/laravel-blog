@@ -12,13 +12,13 @@
 - [x] Update
 - [x] Delete
 ### Tag structure :
-- Nom
-- Description
-- Image
+- name
+- description
+- image
 
 ## CRUD pour les articles (création, affichage dans un tableau, update, delete) 
 - [x] Creation
-- [ ] Retrieval
+- [X] Retrieval
 - [ ] Update
 - [ ] Delete
 ### Article structure :

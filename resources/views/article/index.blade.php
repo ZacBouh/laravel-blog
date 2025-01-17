@@ -5,8 +5,27 @@
 @section('body_title', 'Liste des Articles')
 @section('body')
 
-@if('count($articles) == 0')
+@if(count($articles) == 0)
 <p>No Article found</p>
 @endif
+
+@foreach ($articles as $article )
+    <h3>{{$article->title}}</h3>
+    <p>Auteur : {{$article->user_id}}</p>
+    <p>Publié le : {{$article->created_at}}</p>
+    <div class="tag-container">
+        @foreach ($article->tags as $tag )
+        <div class="tag">{{$tag->name}}</div>
+        @endforeach
+    </div>
+    <div>
+        <img src="{{$article->image_url}}" alt="">
+    </div>
+    <div>
+        <p>{{$article->content}}</p>
+    </div>
+
+                
+@endforeach
 
 @endsection
