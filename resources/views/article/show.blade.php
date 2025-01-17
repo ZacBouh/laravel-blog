@@ -2,10 +2,10 @@
 
 @section('title', 'Articles')
 
-@section('body_title', 'Liste des Articles')
+@section('body_title', $article->title)
 @section('body')
 
-@if(count($articles) == 0)
+@if(empty($article))
 <p>No Article found</p>
 @endif
 
@@ -13,16 +13,9 @@
     <p class="alert alert-success">{{session('success')}}</p>
 @endif
 
-@foreach ($articles as $article )
     <div class='article-container' >
         <div>
             <h3>{{$article->title}}</h3>
-            <a href="{{ route('articles.edit', $article->id)}}"><button>edit</button></a>
-            <form action="{{route('articles.delete', $article->id)}}" method="post" >
-                @csrf
-                @method('DELETE')
-                <button type="submit">delete</button>
-            </form>
         </div>
         <p>Auteur : {{$article->user_id}}</p>
         <p>Publié le : {{$article->created_at}}</p>
@@ -36,11 +29,8 @@
         </div>
         <div>
             <p>{{$article->content}}</p>
-            <a href="{{ route('articles.show', $article->id) }}"><button>ReadMore</button></a>
         </div> 
     </div>
 
                 
-@endforeach
-
 @endsection

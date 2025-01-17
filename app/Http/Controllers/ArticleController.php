@@ -13,7 +13,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('created_at', 'desc')->get();
         return view('article.index', ['articles' => $articles]);
     }
 
@@ -103,8 +103,8 @@ class ArticleController extends Controller
         return redirect()->route('articles.index')->with('success', 'Article supprimé : ' . $article->title);
     }
 
-    public function show()
+    public function show(Article $article)
     {
-        return view('misc.todo', ['to_implement' => __METHOD__]);
+        return view('article.show', ['article' => $article]);
     }
 }

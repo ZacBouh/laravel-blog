@@ -2,7 +2,7 @@
 # PROJET BLOG
 
 ## Page index : 
-- [ ] Listing des articles du plus récent au plus ancien (Image principale, titre, catégorie, date, auteur, début de l'article + un bouton pour aller voir la fiche avec l'article complet)
+- [x] Listing des articles du plus récent au plus ancien (Image principale, titre, catégorie, date, auteur, début de l'article + un bouton pour aller voir la fiche avec l'article complet)
 - [ ] faire une liste des catégories ayant des articles afin de filtrer pour afficher les articles selon la catégorie
 - [ ] faire un champ recherche pour afficher les article selon la recherche (on recherche dans le titre, dans le contenu, dans les auteurs.)
 
