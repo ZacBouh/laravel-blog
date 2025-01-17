@@ -8,8 +8,8 @@
 
 ## CRUD pour les catégories (création, affichage dans un tableau, update, delete)
 - [x] Creation
-- [ ] Retrieval
-- [ ] Update
+- [x] Retrieval
+- [x] Update
 - [ ] Delete
 ### Tag structure :
 - Nom
