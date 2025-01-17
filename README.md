@@ -17,18 +17,26 @@
 - Image
 
 ## CRUD pour les articles (création, affichage dans un tableau, update, delete) 
-
-- [ ] Titre
-- [ ] auteur
-- [ ] created_at, updated_at (timestamp)
-- [ ] catégorie id (clé étrangère)
-- [ ] contenu
-- [ ] image principale
-- [ ] début de l'article
-- [ ] slug (unique)
+- [x] Creation
+- [ ] Retrieval
+- [ ] Update
+- [ ] Delete
+### Article structure :
+- title
+- user_id
+- content
+- image
 
 ## Page article :
-- [ ] on affiche l'aricle au complet
+### on affiche l'aricle au complet 
+- Titre
+- auteur
+- created_at, updated_at (timestamp)
+- catégorie id (clé étrangère)
+- contenu
+- image principale
+- début de l'article
+- slug (unique)
 
 ## Page contact :
 - [ ] Un formulaire permettant soit l'envoi de mail soit l'enregistrement en bdd soit les deux
