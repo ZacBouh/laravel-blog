@@ -56,8 +56,9 @@ class TagController extends Controller
         if ($request->hasFile('image')) {
             $imageRelativePath = $request->file('image')->store('tag_images', 'public');
             $validated_request['image'] = $imageRelativePath;
-
-            Storage::disk('public')->delete($tag->image);
+            if (!empty($tag->image)) {
+                Storage::disk('public')->delete($tag->image);
+            }
         }
 
         $tag->update($validated_request);
