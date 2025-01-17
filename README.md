@@ -19,7 +19,7 @@
 ## CRUD pour les articles (création, affichage dans un tableau, update, delete) 
 - [x] Creation
 - [X] Retrieval
-- [ ] Update
+- [x] Update
 - [x] Delete
 ### Article structure :
 - title
