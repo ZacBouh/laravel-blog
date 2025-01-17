@@ -8,6 +8,7 @@ use App\Models\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
+
 class ArticleController extends Controller
 {
     public function index()
@@ -52,14 +53,44 @@ class ArticleController extends Controller
         return back()->with('success', 'Nouvel article créé avec succès : ' . $article->title);
     }
 
-    public function edit()
+    public function edit(Article $article)
     {
-        return view('misc.todo', ['to_implement' => __METHOD__]);
+        $tags = Tag::all();
+        return view('article.edit', [
+            'article' => $article,
+            'tags' => $tags
+        ]);
     }
 
-    public function update()
+    public function update(Request $request, Article $article)
     {
-        return view('misc.todo', ['to_implement' => __METHOD__]);
+        $tagsId = Tag::pluck('id')->toArray();
+
+        $validated_request = $request->validate([
+            'title' => 'required|string|max:255',
+            'tags' => 'nullable|array',
+            'tags.*' => ['integer', Rule::in($tagsId)],
+            'content' => 'required|string|max:16380',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:2048'
+        ]);
+
+        $validated_request['user_id'] = 1;
+
+        if ($request->hasFile('image')) {
+            $imageRelativePath = $request->file('image')->store('article_images', 'public');
+            $validated_request['image'] = $imageRelativePath;
+            if (!empty($article->image)) {
+                Storage::disk('public')->delete($article->image);
+            }
+        }
+
+        $article->update($validated_request);
+
+        if (!empty($validated_request['tags'])) {
+            $article->tags()->sync($validated_request['tags']);
+        }
+
+        return back()->with('success', 'Modifications enregistrées.');
     }
 
     public function delete(Article $article)

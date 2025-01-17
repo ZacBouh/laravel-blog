@@ -10,9 +10,9 @@
 </script>
 @endsection
 
-@section('title', 'Article Creation')
+@section('title', 'Article Edition')
 
-@section('body_title', "Création d'un Article")
+@section('body_title', "Modification d'un Article")
 @section('body')
 
 @if(@session('success'))
@@ -29,21 +29,23 @@
 @endif
 
 
-<form action="{{ route('articles.store') }}" method="post" enctype="multipart/form-data" >
+<form action="{{ route('articles.update', $article->id) }}" method="post" enctype="multipart/form-data" >
     @csrf
-    @method('POST')
+    @method('PUT')
     <label for="title">Titre</label>
-    <input type="text" id="title" name="title" value="{{ old('title') }}" >
+    <input type="text" id="title" name="title" value="{{ old('title', $article->title) }}" >
     
     <select class="form-select" multiple id="tags" data-placeholder="Themes" name='tags[]'>
         @foreach ($tags as $tag )
-            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+            <option value="{{ $tag->id }}"
+                {{ in_array($tag->id, old('tags', $article->tags->pluck('id')->toArray())) ? 'selected' : '' }}
+                >{{ $tag->name }}</option>         
         @endforeach
     </select>
 
 
     <label for="content">Contenu</label>
-    <textarea type="text" id="content" name="content" >{{ old('content') }}</textarea>    
+    <textarea type="text" id="content" name="content"  >{{ old('content', $article->content) }}</textarea>    
     <label for="image">Image</label>
     <input type="file" id="image" name="image" >
 

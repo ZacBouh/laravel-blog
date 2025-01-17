@@ -17,6 +17,7 @@
     <div class='article-container' >
         <div>
             <h3>{{$article->title}}</h3>
+            <a href="{{ route('articles.edit', $article->id)}}"><button>edit</button></a>
             <form action="{{route('articles.delete', $article->id)}}" method="post" >
                 @csrf
                 @method('DELETE')
