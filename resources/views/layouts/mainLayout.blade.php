@@ -17,8 +17,12 @@
         </h1>
         <nav>
             <ul style="display: flex; list-style: none; gap: 15px;">
-                <li>Home</li>
-                <li>Categories</li>
+                <li>
+                    <a href="{{ route('articles.index') }}">Articles</a>  
+                </li> 
+                <li>
+                    <a href="{{ route('tags.index') }}">Categories</a>  
+                </li> 
                 <li>Contact</li>
             </ul>
         </nav>

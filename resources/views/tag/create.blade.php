@@ -15,10 +15,10 @@
     @csrf
     @method('POST')
     <label for="name">Nom du tag</label>
-    <input type="text" id="name" name="name" >
+    <input type="text" id="name" name="name" value="{{ old(name) }}" >
     
     <label for="description">Description</label>
-    <input type="text" id="description" name="description" >
+    <input type="text" id="description" name="description" value="{{ old(description) }}" >
 
     <label for="image">Image associée</label>
     <input type="file" id="image" name="image" >
