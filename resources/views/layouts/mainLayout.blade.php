@@ -15,15 +15,36 @@
         <h1>
             This is the header
         </h1>
-        <nav>
-            <ul style="display: flex; list-style: none; gap: 15px;">
-                <li>
-                    <a href="{{ route('articles.index') }}">Articles</a>  
+        <nav  >
+            <ul class="navbar-nav" style="display: flex; list-style: none; gap: 15px; flex-direction: row;">
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Articles
+                    </a>
+                    <ul class="dropdown-menu" >
+                        <li><a  href="{{ route('articles.index') }}">Liste  </a></li>
+                        <li><a  href="{{ route('articles.create') }}">Créer</a></li>
+                    </ul>
                 </li> 
-                <li>
-                    <a href="{{ route('tags.index') }}">Categories</a>  
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tags
+                    </a>
+                    <ul class="dropdown-menu" >
+                        <li><a  href="{{ route('tags.index') }}">Liste</a></li>
+                        <li><a  href="{{ route('tags.create') }}">Créer</a></li>
+                    </ul>
                 </li> 
-                <li>Contact</li>
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </a>
+                    <ul class="dropdown-menu" >
+                        <li><a  href="#">Écrire un message</a></li>
+                        <li><a  href="#">LinkedIn</a></li>
+                    </ul>
+                </li> 
+                
             </ul>
         </nav>
     </div>
