@@ -154,7 +154,7 @@
     </div>
 
     <div class="container" style="display: flex; flex-direction: column; flex-grow: 1;" >
-        <h2>
+        <h2 style="margin-top: 24px;">
             @yield('body_title', 'Body Title')
         </h2>
         @yield('body')

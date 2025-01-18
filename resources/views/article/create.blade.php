@@ -2,17 +2,13 @@
 
 @push('script')
 <script>
-    $( '#tags' ).select2( {
-        theme: "bootstrap-5",
-        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
-        placeholder: $( this ).data( 'placeholder' ),
-    } );
+    $( '#tags' ).select2();
 </script>
 @endpush
 
 @section('title', 'Article Creation')
 
-@section('body_title', "Création d'un Article")
+@section('body_title', "Nouvel Article")
 @section('body')
 
 @if(@session('success'))
@@ -29,25 +25,26 @@
 @endif
 
 
-<form action="{{ route('articles.store') }}" method="post" enctype="multipart/form-data" >
+<form action="{{ route('articles.store') }}" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 32px; margin-top: 32px;" >
     @csrf
     @method('POST')
-    <label for="title">Titre</label>
-    <input type="text" id="title" name="title" value="{{ old('title') }}" >
+    <label style="margin-bottom: -24px" for="title">Titre</label>
+    <input class="form-control" type="text" id="title" name="title" value="{{ old('title') }}" >
     
+    <label style="margin-bottom: -24px" for="tags">Tags</label>
     <select class="form-select" multiple id="tags" data-placeholder="Themes" name='tags[]'>
         @foreach ($tags as $tag )
             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
         @endforeach
     </select>
 
+    <label style="margin-bottom: -24px" for="image">Image</label>
+    <input class="form-control" type="file" id="image" name="image" >
 
-    <label for="content">Contenu</label>
-    <textarea type="text" id="content" name="content" >{{ old('content') }}</textarea>    
-    <label for="image">Image</label>
-    <input type="file" id="image" name="image" >
+    <label style="margin-bottom: -24px" for="content">Contenu</label>
+    <textarea class="form-control" type="text" id="content" name="content"  rows="20" >{{ old('content') }}</textarea>    
 
-    <button type="submit">Créer</button>
+    <button class="btn bg-custom-button" type="submit">Créer</button>
 </form>
 
 @endsection
